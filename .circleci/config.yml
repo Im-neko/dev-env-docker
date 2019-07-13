@@ -16,7 +16,7 @@ jobs:
               docker save $(docker images | awk 'NR>=2 && ! /^<none>/{print $1}') -o ~/caches/images.tar
             fi
       - save_cache:
-          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "api/Dockerfile" }}
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
       - run:
           name: finish cacheing
@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "api/Dockerfile" }}
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
       - run: 
           name: docker load
