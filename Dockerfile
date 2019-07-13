@@ -6,6 +6,10 @@ RUN gpasswd -a neko sudo
 RUN echo "neko:changemePassword2255" | chpasswd
 
 RUN apt update -y && apt install -y sudo \
+  software-properties-common \
+  make \
+  build-essential \
+  cron \
   wget \
   git \
   curl \
