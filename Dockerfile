@@ -16,13 +16,13 @@ RUN apt update -y && apt install -y sudo \
   telnet \
   tmux
 
-RUN curl https://im-neko.net/files/setting.sh | bash
+RUN curl https://im-neko.dev/files/setting.sh | bash
 
 RUN echo "neko ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 USER neko
 WORKDIR /home/neko
 
-RUN curl https://im-neko.net/files/setting.sh | bash
+RUN curl https://im-neko.dev/files/setting.sh | bash
 
 CMD ["zsh"]

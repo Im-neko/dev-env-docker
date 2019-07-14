@@ -49,6 +49,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - restore_cache:
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "Dockerfile" }}
+          paths: ~/caches/images.tar
+      - run: 
+          name: docker load
+          command: if test -d ~/caches; then docker load -i ~/caches/images.tar; fi
       - run: 
           name: build image 
           command: |
